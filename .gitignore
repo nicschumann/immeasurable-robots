@@ -1,0 +1,5 @@
+# Ignore Environment
+.env
+
+# Ignore credentials for RasPI
+wpa_supplicant.conf

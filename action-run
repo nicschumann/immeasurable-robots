@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ENV=pi python3 test-manual-control.py
