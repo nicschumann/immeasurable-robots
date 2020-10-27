@@ -3,7 +3,7 @@
 
 ## Stepper Motor Setup
 
-- Wire-pairs on the Adafruit stepper motors are: [`Green`, `Gray`], and [`Red`, `Yellow`]. You can test these combinations with the COntinuity Test mode on a multimeter. If a wire combination lights up with some resistance, it is a pair. If there is not continuity, it is not a pair.
+- Wire-pairs on the Adafruit stepper motors are: [`Green`, `Gray`], and [`Red`, `Yellow`]. You can test these combinations with the Continuity Test mode on a multimeter. If a wire combination lights up with some resistance, it is a pair. If there is not continuity, it is not a pair.
 
 ## References
 
