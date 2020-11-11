@@ -2,7 +2,7 @@ import time
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 
-K1 = MotorKit(address=0x61)
+K1 = MotorKit(address=0x60)
 
 M1 = K1.stepper1
 
