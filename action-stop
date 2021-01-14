@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pkill python
+python run-release-motors.py

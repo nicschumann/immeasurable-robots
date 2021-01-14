@@ -1,0 +1,8 @@
+#!/bin/bash
+
+python run-single-rail.py --rail A0 &
+python run-single-rail.py --rail B0 &
+python run-single-rail.py --rail C0 &
+python run-single-rail.py --rail C1 &
+python run-single-rail.py --rail B1 &
+python run-single-rail.py --rail A1 &
