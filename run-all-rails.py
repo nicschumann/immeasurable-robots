@@ -54,9 +54,12 @@ A1_switch.pull = digitalio.Pull.DOWN
 # Data and State Arrays
 
 rails       = [A0_motor, B0_motor, C0_motor, C1_motor, B1_motor, A1_motor]
-pins        = [A0_switch, B0_switch, C0_switch, C1_switch, B1_motor, A1_motor]
+pins        = [A0_switch, B0_switch, C0_switch, C1_switch, B1_switch, A1_switch]
 seen        = [False] * len(pins)
 directions  = [FORWARD] * len(rails)
+steps       = [0] * len(rails)
+limits      = [400, 400, 400, 400, 400, 400]
+
 
 # Rail logic
 
@@ -65,9 +68,10 @@ while True:
 
     for i in range(len(rails)):
         if triggered[i]:
-            print("switch %i was triggered" % i)
+            # print("switch %i was triggered" % i)
             directions[i] = BACKWARD if directions[i] == FORWARD else FORWARD
             seen[i] = True
+            steps[i] = 0
 
         if not pins[i].value:
             seen[i] = False
@@ -75,6 +79,11 @@ while True:
     for i in range(len(rails)):
         rails[i].onestep(
             direction=directions[i],
-            style=stepper.INTERLEAVE)
+            style=stepper.SINGLE)
+        steps[i] += 1
 
-    time.sleep(0.01)
+    for i in range(len(rails)):
+        if steps[i] >= limits[i]:
+            # print("limit was reached")
+            directions[i] = BACKWARD if directions[i] == FORWARD else FORWARD
+            steps[i] = 0

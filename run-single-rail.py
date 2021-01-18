@@ -89,7 +89,7 @@ while True:
 
     for i in range(len(rails)):
         if triggered[i]:
-            print("switch was triggered")
+            # print("switch was triggered")
             directions[i] = BACKWARD if directions[i] == FORWARD else FORWARD
             seen[i] = True
             steps[i] = 0
@@ -100,12 +100,12 @@ while True:
     for i in range(len(rails)):
         rails[i].onestep(
             direction=directions[i],
-            style=stepper.INTERLEAVE)
+            style=stepper.SINGLE)
         steps[i] += 1
 
     for i in range(len(rails)):
         if steps[i] >= limits[i]:
-            print("limit was reached")
+            # print("limit was reached")
             directions[i] = BACKWARD if directions[i] == FORWARD else FORWARD
             steps[i] = 0
 
