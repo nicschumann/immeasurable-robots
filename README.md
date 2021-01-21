@@ -2,7 +2,6 @@
 
 # Pinouts and Diagrams
 
-
 | Rail ID | GPIO Switch Pin | MotorKit Address | Stepper Number |
 |---------|-----------------|------------------|----------------|
 | **A0**  | D4              | 0x60             | Stepper 1      |
@@ -11,6 +10,18 @@
 | **C1**  | D14             | 0x61             | Stepper 2      |
 | **B1**  | D15             | 0x62             | Stepper 1      |
 | **A1**  | D18             | 0x62             | Stepper 2      |
+
+
+# Measured Run lengths in Motor Single-Steps
+
+| Rail ID | Run Length (steps) | Length in Software |
+|---------|--------------------|--------------------|
+| **A0**  | 2628               | 2588               |
+| **B0**  | 4808               | 4768               |
+| **C0**  | 5614               | 5574               |
+| **C1**  | 5655               | 5615               |
+| **B1**  | 4795               | 4755               |
+| **A1**  | 2640               | 2600               |
 
 
 ## Stepper Motor Setup

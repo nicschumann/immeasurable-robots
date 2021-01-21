@@ -58,7 +58,7 @@ pins        = [A0_switch, B0_switch, C0_switch, C1_switch, B1_switch, A1_switch]
 seen        = [False] * len(pins)
 directions  = [FORWARD] * len(rails)
 steps       = [0] * len(rails)
-limits      = [400, 400, 400, 400, 400, 400]
+limits      = [2588, 4768, 5574, 5615, 4755, 2600]
 
 
 # Rail logic
@@ -71,19 +71,20 @@ while True:
             # print("switch %i was triggered" % i)
             directions[i] = BACKWARD if directions[i] == FORWARD else FORWARD
             seen[i] = True
-            steps[i] = 0
+            steps[i] = -20
 
-        if not pins[i].value:
+        if not pins[i].value and seen[i] == True:
             seen[i] = False
 
-    for i in range(len(rails)):
-        rails[i].onestep(
-            direction=directions[i],
-            style=stepper.SINGLE)
-        steps[i] += 1
-
-    for i in range(len(rails)):
         if steps[i] >= limits[i]:
             # print("limit was reached")
             directions[i] = BACKWARD if directions[i] == FORWARD else FORWARD
             steps[i] = 0
+
+        rails[i].onestep(
+            direction=directions[i],
+            style=stepper.SINGLE)
+
+        steps[i] += 1
+
+        time.sleep(0.003)
