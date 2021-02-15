@@ -45,6 +45,22 @@ sudo apt-get install -y python3-venv
 
 This project uses circuitpython. Install it on the pi hardware by following [this tutorial](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi).
 
+## Enable Running the Script at Startup
+
+To run this project on the startup, you need to edit the `/etc/rc.local` file on the Raspberry Pi.
+
+```sh
+sudo nano /etc/rc.local
+```
+
+and add the following line above `exit 0`
+
+```sh
+python /home/pi/immeasurable-robots/run-all-rails.py &
+```
+
+This will run all the rails on the device startup.
+
 ## References
 
 - https://circuitpython.readthedocs.io/en/2.x/shared-bindings/digitalio/__init__.html
