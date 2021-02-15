@@ -10,8 +10,6 @@ import busio
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 
-import pdb
-
 # signals
 def sigint_handler(sig, frame):
     for M in rails: M.release()
