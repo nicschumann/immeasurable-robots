@@ -3,3 +3,6 @@
 
 # Ignore credentials for RasPI
 wpa_supplicant.conf
+
+# Ignore internal documentation
+README-INTERNAL.md
