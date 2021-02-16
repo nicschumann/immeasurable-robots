@@ -24,10 +24,10 @@ SPEED = stepper.SINGLE
 
 DWELL_TIME_STEPS = 120
 RUNNING_TIME_S = 5 * 60
-COOLING_TIME_S = 2 * 60
+COOLING_TIME_S = 2.5 * 60
 COOLING_LONG_TIME_S = 20 * 60
 COOLING_LONG_STEPS = 7
-TOTAL_RUNNING_TIME_S = 8.5 * 60 * 60
+TOTAL_RUNNING_TIME_S = 8.25 * 60 * 60
 
 # Convenience Constants
 
@@ -77,8 +77,6 @@ T           = 0
 t           = 0
 c           = 0
 
-
-
 # Rail logic
 
 while True:
@@ -114,17 +112,21 @@ while True:
 
     e = time.time()
     t += (e - s)
+    T += (e - s)
+    print(T)
 
     if (t > RUNNING_TIME_S):
-        T += t
         c += 1
         t = 0
 
         if (c % COOLING_LONG_STEPS == 0):
             c = 0
+            print('long cooling sleep')
             time.sleep(COOLING_LONG_TIME_S)
         else:
+            print('short cooling sleep')
             time.sleep(COOLING_TIME_S)
 
     if (T > TOTAL_RUNNING_TIME_S):
+        print('exiting for time limit')
         exit(0)

@@ -24,10 +24,10 @@ SPEED = stepper.SINGLE
 
 DWELL_TIME_STEPS = 120
 RUNNING_TIME_S = 5 * 60
-COOLING_TIME_S = 2 * 60
+COOLING_TIME_S = 1 * 60
 COOLING_LONG_TIME_S = 10 * 60
 COOLING_LONG_STEPS = 8
-TOTAL_RUNNING_TIME_S = 8.5 * 60 * 60
+TOTAL_RUNNING_TIME_S = 8.25 * 60 * 60
 
 # Convenience Constants
 
@@ -85,7 +85,7 @@ railsets = [
     [2, 4, 5],
     [0, 5],
     [1, 3],
-    [2, 4, 5]
+    [2, 4, 5],
     [1, 2, 3, 4],
     [0, 2, 4, 5]
 ]
@@ -95,7 +95,8 @@ railsets = [
 while True:
     s = time.time()
     railset = railsets[r_index]
-    triggered = [*map(lambda i: pins[i].value and not seen[i], railset)]
+    print(railset)
+    triggered = [*map(lambda i: pins[i].value and not seen[i], range(len(rails)))]
 
     for i in railset:
         if dwell[i] > 0:
@@ -126,9 +127,10 @@ while True:
 
     e = time.time()
     t += (e - s)
+    T += (e - s)
+    print(r_index, t)
 
     if (t > RUNNING_TIME_S):
-        T += t
         c += 1
         t = 0
         r_index = (r_index + 1) % len(railsets)
