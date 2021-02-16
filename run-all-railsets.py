@@ -81,13 +81,13 @@ r_index     = 0
 # Railset logic
 
 railsets = [
-    [0, 1, 3],
-    [2, 4, 5],
-    [0, 5],
-    [1, 3],
-    [2, 4, 5],
-    [1, 2, 3, 4],
-    [0, 2, 4, 5]
+    [0, 1, 3],   # |  |  -  |  -  -
+    [2, 4, 5],   # -  -  |  -  |  |
+    [0, 5],      # |  -  -  -  -  |
+    [1, 3],      # -  |  -  |  -  -
+    [2, 4, 5],   # -  -  |  _  |  |
+    [1, 3, 4],   # -  |  -  |  |  -
+    [0, 2, 5]    # |  -  |  -  -  |
 ]
 
 # Rail Action
@@ -95,7 +95,7 @@ railsets = [
 while True:
     s = time.time()
     railset = railsets[r_index]
-    print(railset)
+    # print(railset)
     triggered = [*map(lambda i: pins[i].value and not seen[i], range(len(rails)))]
 
     for i in railset:
@@ -128,7 +128,7 @@ while True:
     e = time.time()
     t += (e - s)
     T += (e - s)
-    print(r_index, t)
+    # print(r_index, t)
 
     if (t > RUNNING_TIME_S):
         c += 1

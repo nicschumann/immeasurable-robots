@@ -121,12 +121,12 @@ while True:
 
         if (c % COOLING_LONG_STEPS == 0):
             c = 0
-            print('long cooling sleep')
+            # print('long cooling sleep')
             time.sleep(COOLING_LONG_TIME_S)
         else:
-            print('short cooling sleep')
+            # print('short cooling sleep')
             time.sleep(COOLING_TIME_S)
 
     if (T > TOTAL_RUNNING_TIME_S):
-        print('exiting for time limit')
+        # print('exiting for time limit')
         exit(0)
